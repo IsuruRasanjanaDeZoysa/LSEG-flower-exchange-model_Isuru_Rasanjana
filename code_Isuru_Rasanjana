@@ -178,7 +178,7 @@ int main(){
 
     fstream fout;
     fout.open("execution_rep.csv", ios::out | ios::app);
-    //fout << "Order ID" << ", "<< "Cl. Ord. ID" << ", "<< "Isntrument" << ", " << "Side" << ", "<< "Execution Status" << ", "<< "Qunatity"<<","<< "Price"<<","<<"Reason"<<","<<"Transaction Time"<<"\n";
+    fout << "Order ID" << ", "<< "Cl. Ord. ID" << ", "<< "Isntrument" << ", " << "Side" << ", "<< "Execution Status" << ", "<< "Qunatity"<<","<< "Price"<<","<<"Reason"<<","<<"Transaction Time"<<"\n";
     int orderid=1;
     while(getline(file,line)){
         
@@ -209,7 +209,7 @@ int main(){
         
         
         if(check_correctness(fout,cl_order_id,instrument,side_number,starting_quantity_number,price_number) || error){continue;}
-        //rose part should be under here
+        //rose orders processing
         if(instrument=="Rose"){
                   if(side=="1" && first_buy_rose){
             first_buy_rose=false;
@@ -458,10 +458,11 @@ int main(){
             price_vector_sell_rose.insert(price_vector_sell_rose.begin()+index,price_number);
             
         }       
+        //Lavender orders processing
         }else if(instrument=="Lavender"){
                    if(side=="1" && first_buy_Lavender){
             first_buy_Lavender=false;
-            if(first_sell_Lavender){//change here if it is possible
+            if(first_sell_Lavender){
                 order_id_vector_buy_Lavender.push_back(order_id);
                 cl_order_id_vector_buy_Lavender.push_back(cl_order_id);
                 instrument_vector_buy_Lavender.push_back(instrument);
@@ -706,11 +707,11 @@ int main(){
             price_vector_sell_Lavender.insert(price_vector_sell_Lavender.begin()+index,price_number);
             
         } 
-            
+        //Lotus orders processing
         }else if(instrument=="Lotus"){
                   if(side=="1" && first_buy_Lotus){
             first_buy_Lotus=false;
-            if(first_sell_Lotus){//change here if it is possible
+            if(first_sell_Lotus){
                 order_id_vector_buy_Lotus.push_back(order_id);
                 cl_order_id_vector_buy_Lotus.push_back(cl_order_id);
                 instrument_vector_buy_Lotus.push_back(instrument);
@@ -955,10 +956,11 @@ int main(){
             price_vector_sell_Lotus.insert(price_vector_sell_Lotus.begin()+index,price_number);
             
         }       
+        //Tulip orders processing
         }else if(instrument=="Tulip"){
                    if(side=="1" && first_buy_Tulip){
             first_buy_Tulip=false;
-            if(first_sell_Tulip){//change here if it is possible
+            if(first_sell_Tulip){
                 order_id_vector_buy_Tulip.push_back(order_id);
                 cl_order_id_vector_buy_Tulip.push_back(cl_order_id);
                 instrument_vector_buy_Tulip.push_back(instrument);
@@ -1203,9 +1205,10 @@ int main(){
             price_vector_sell_Tulip.insert(price_vector_sell_Tulip.begin()+index,price_number);
             
         }
-        }        
+        }     
+        //Orchid orders processing   
         else{       
-                   if(side=="1" && first_buy_Orchid){
+        if(side=="1" && first_buy_Orchid){
             first_buy_Orchid=false;
             if(first_sell_Orchid){//change here if it is possible
                 order_id_vector_buy_Orchid.push_back(order_id);
